@@ -5,6 +5,6 @@
 	<% if user_signed_in? %>
 		# things go here
 	<% else %>
-		<p>One day you'll be able to <%= link_to "Log in", "#", class: "btn btn-primary" %> here.</p>
+		<p>One day you'll be able to <%= link_to "Log in", new_user_session_path, class: "btn btn-primary" %> here.</p>
 	<% end %>
 </div>
