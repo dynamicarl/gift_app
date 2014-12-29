@@ -37,3 +37,16 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin]
+
+# Custom bundles added by William
+	#bootstrap-sass
+	gem 'bootstrap-sass'
+	
+	#heroku
+	group :development :test do 
+		gem 'sqlite3'
+	end
+	group :production do 
+		gem 'pg'
+		gem 'rails_12factor'
+	end

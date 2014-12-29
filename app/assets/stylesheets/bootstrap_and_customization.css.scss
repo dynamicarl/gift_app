@@ -1,0 +1,30 @@
+// Place all the styles related to the pages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+//global bootstrap, other settings
+@import url(http://fonts.googleapis.com/css?family=Lato:400,700);
+$brand-primary: #3498db;
+$font-family-sans-serif:	'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+//body configs
+$body-bg: #6C7A89;
+
+//navbar
+$navbar-height: 45px;
+$navbar-inverse-bg: #ecf0f1;
+$navbar-inverse-link-color: #2c3e50;
+
+
+//jumbotron settings
+$jumbotron-bg: #ecf0f1;
+
+@import 'bootstrap';
+
+.center {
+     text-align: center;
+}
+
+.navbar-brand {
+     font-weight: bold;
+}
