@@ -43,7 +43,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin]
 	gem 'bootstrap-sass'
 	
 	#heroku
-	group :development :test do 
+	group :development, :test do 
 		gem 'sqlite3'
 	end
 	group :production do 
