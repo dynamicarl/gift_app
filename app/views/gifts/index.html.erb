@@ -1,0 +1,30 @@
+<div class="panel panel-default">
+	<div class="panel-heading"><h1>Listing gifts</h1></div>
+	<div class="panel-body">
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Description</th>
+					<th colspan="4"></th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<% @gifts.each do |gift| %>
+					<tr>
+						<td><%= gift.user_id%>
+						<td><%= gift.description %></td>
+						<td><%= link_to 'Show', gift %></td>
+						<td><%= link_to 'Edit', edit_gift_path(gift) %></td>
+						<td><%= link_to 'Delete', gift, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+						
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+	
+		<br>
+
+		<%= link_to 'New Gift', new_gift_path %>
+	</div>
+</div>

@@ -1,0 +1,12 @@
+<p id="notice"><%= notice %></p>
+
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<strong>Description:</strong>
+		<%= @gift.description %>
+	</div>
+	<div class="panel-body">
+		<%= link_to 'Edit', edit_gift_path(@gift) %> |
+		<%= link_to 'Back', gifts_path %>
+	</div>
+</div>
