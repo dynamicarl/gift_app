@@ -41,6 +41,8 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin]
 # Custom bundles added by William
 	#bootstrap-sass
 	gem 'bootstrap-sass'
+	# devise - user management
+	gem 'devise'
 	
 	#heroku
 	group :development, :test do 
