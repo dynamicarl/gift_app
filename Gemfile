@@ -51,6 +51,10 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin]
 	# AWS for image storage
 	gem 'aws-sdk', '~> 1.20.0'
 	
+	# masonry makes the javascript cooler
+	gem 'jquery-turbolinks'
+	gem 'masonry-rails'
+	
 	#heroku
 	group :development, :test do 
 		gem 'sqlite3'

@@ -1,32 +1,22 @@
 <div class="panel panel-default">
 	<div class="panel-heading"><h1>Your Gifts</h1></div>
-	<div class="panel-body">
-		<table class="table">
-			<thead>
-				<tr>
-					<th>Description</th>
-					<th>Image</th>
-					<th colspan="4"></th>
-				</tr>
-			</thead>
-
-			<tbody>
-				<% @gifts.each do |gift| %>
-					<tr>
-						<% if gift.user == current_user %>
-						<td><%= gift.description %></td>
-						<td><%= image_tag gift.item_image.url(:medium) %></td>
-						<td><%= link_to 'Show', gift %></td>
-							<td><%= link_to 'Edit', edit_gift_path(gift) %></td>
-							<td><%= link_to 'Delete', gift, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-						<% end %>					
-					</tr>
-				<% end %>
-			</tbody>
-		</table>
-	
-		<br>
-
-		<%= link_to 'New Gift', new_gift_path %>
+		<div class="panel-heading center"><%= link_to 'New Gift', new_gift_path %></div>
+		<div id="gifts" class="transitions-enabled">
+			<% @gifts.each do |gift| %>
+				<div class="box panel panel-default">
+					<% if gift.user == current_user %>
+						<div class="panel-header"><strong><%= gift.description %></strong></div>
+						<%= link_to image_tag(gift.item_image.url(:medium)), gift %>
+						<div class="panel-body">
+							<% link_to 'Show', gift %>
+							<%= link_to 'Edit', edit_gift_path(gift) %>
+							<%= link_to 'Delete', gift, method: :delete, data: { confirm: 'Are you sure?' } %>
+						</div>
+					<% end %>					
+				</div>
+			<% end %>
+		</div>
+	<br>
+	<div class="panel-footer center"><%= link_to 'New Gift', new_gift_path %></div>
 	</div>
 </div>

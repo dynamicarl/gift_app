@@ -4,6 +4,7 @@
 	
 	<% if user_signed_in? %>
 		<%= link_to "View your gifts", gifts_path, class: "btn btn-primary" %><br /><br />
+		<%= link_to "View your recipients", recipients_path, class: "btn btn-primary" %><br /><br />
 		Or <%= link_to "Add", new_gift_path, class: "btn btn-primary" %> a new gift.
 	<% else %>
 		<p>One day you'll be able to <%= link_to "Log in", new_user_session_path, class: "btn btn-primary" %> here.</p>

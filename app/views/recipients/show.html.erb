@@ -1,0 +1,13 @@
+<p id="notice"><%= notice %></p>
+<div class="panel panel-default">
+	<div class="panel-heading"><strong><%= @recipient.name %></strong></div>
+	<div class="panel-body">
+		<strong>Birthday:</strong>
+			<%= @recipient.birthday %>
+		</p>
+	</div>
+	<div class="panel-footer">
+		<%= link_to 'Edit', edit_recipient_path(@recipient) %> |
+		<%= link_to 'Back', recipients_path %>
+	</div>
+</div>

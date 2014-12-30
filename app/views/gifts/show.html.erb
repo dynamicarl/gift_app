@@ -1,18 +1,21 @@
 <p id="notice"><%= notice %></p>
 
-<div class="panel panel-default">
-	<div class="panel-heading">
-		<strong>Description:</strong>
-		<%= @gift.description %>
-	</div>
-	<div class="panel-body">
-		<strong>Item Image</strong><br />
-		<%= image_tag @gift.item_image.url(:medium) %><br /><br />
-		<strong>Wrapped Image</strong><br />
-		<%= image_tag @gift.wrapped_image.url(:medium) %><br /><br />
-		<% if @gift.user == current_user %>
-			<%= link_to 'Edit', edit_gift_path(@gift) %> |
-		<% end %>
-		<%= link_to 'Back', gifts_path %>
+<div class="row">
+	<div class="col-md-offset-2 col-md-8">
+		<div class="panel panel-default">
+			<div class="panel-heading center">
+				<%= @gift.description %>
+			</div>
+			<div class="panel-body">
+				<strong>Item Image</strong><br />
+				<%= image_tag @gift.item_image.url(:thumb) %><br /><br />
+				<strong>Wrapped Image</strong><br />
+				<%= image_tag @gift.wrapped_image.url(:thumb) %><br /><br />
+				<% if @gift.user == current_user %>
+					<%= link_to 'Edit', edit_gift_path(@gift) %> | 
+					<%= link_to 'Back', gifts_path %>
+				<% end %>
+			</div>
+		</div>
 	</div>
 </div>

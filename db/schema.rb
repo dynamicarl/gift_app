@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141230030439) do
+ActiveRecord::Schema.define(version: 20141230050150) do
 
   create_table "gifts", force: true do |t|
     t.string   "description"
@@ -30,6 +30,16 @@ ActiveRecord::Schema.define(version: 20141230030439) do
 
   add_index "gifts", ["user_id"], name: "index_gifts_on_user_id"
 
+  create_table "recipients", force: true do |t|
+    t.string   "name"
+    t.date     "birthday"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+  end
+
+  add_index "recipients", ["user_id"], name: "index_recipients_on_user_id"
+
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -43,9 +53,11 @@ ActiveRecord::Schema.define(version: 20141230030439) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["user_id"], name: "index_users_on_user_id"
 
 end
