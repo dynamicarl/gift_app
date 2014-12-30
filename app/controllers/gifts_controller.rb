@@ -1,6 +1,8 @@
 class GiftsController < ApplicationController
-  before_action :set_gift, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!, except: [:index, :show]
+	before_action	:set_gift, only: [:show, :edit, :update, :destroy]
+	before_action :correct_user, only: [:edit, :update, :destroy, :show]
+	
   # GET /gifts
   # GET /gifts.json
   def index
@@ -14,7 +16,7 @@ class GiftsController < ApplicationController
 
   # GET /gifts/new
   def new
-    @gift = Gift.new
+    @gift = current_user.gifts.build
   end
 
   # GET /gifts/1/edit
@@ -24,31 +26,26 @@ class GiftsController < ApplicationController
   # POST /gifts
   # POST /gifts.json
   def create
-    @gift = Gift.new(gift_params)
-
-    respond_to do |format|
+    #@gift = Gift.new(gift_params)
+		@gift = current_user.gifts.build(gift_params)
+		
+    #respond_to do |format|
       if @gift.save
-        format.html { redirect_to @gift, notice: 'Gift was successfully created.' }
-        format.json { render :show, status: :created, location: @gift }
+				redirect_to @gift, notice: "Gift successfully created"
       else
         format.html { render :new }
-        format.json { render json: @gift.errors, status: :unprocessable_entity }
       end
-    end
+    #end
   end
 
   # PATCH/PUT /gifts/1
   # PATCH/PUT /gifts/1.json
   def update
-    respond_to do |format|
-      if @gift.update(gift_params)
-        format.html { redirect_to @gift, notice: 'Gift was successfully updated.' }
-        format.json { render :show, status: :ok, location: @gift }
-      else
-        format.html { render :edit }
-        format.json { render json: @gift.errors, status: :unprocessable_entity }
-      end
-    end
+		if @gift.update(gift_params)
+			redirect_to @gift, notice: 'Gift successfully updated.'
+		else
+			render action: 'edit'
+		end
   end
 
   # DELETE /gifts/1
@@ -67,8 +64,13 @@ class GiftsController < ApplicationController
       @gift = Gift.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
+		def correct_user
+			@gift = current_user.gifts.find_by(id: params[:id])
+			redirect_to gifts_path, notice: "Not authorized to edit this gift" if @gift.nil?
+		end
+    
+		# Never trust parameters from the scary internet, only allow the white list through.
     def gift_params
-      params.require(:gift).permit(:description)
+      params.require(:gift).permit(:description, :item_image, :wrapped_image)
     end
 end

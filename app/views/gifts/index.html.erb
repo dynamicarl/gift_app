@@ -1,10 +1,11 @@
 <div class="panel panel-default">
-	<div class="panel-heading"><h1>Listing gifts</h1></div>
+	<div class="panel-heading"><h1>Your Gifts</h1></div>
 	<div class="panel-body">
 		<table class="table">
 			<thead>
 				<tr>
 					<th>Description</th>
+					<th>Image</th>
 					<th colspan="4"></th>
 				</tr>
 			</thead>
@@ -12,12 +13,13 @@
 			<tbody>
 				<% @gifts.each do |gift| %>
 					<tr>
-						<td><%= gift.user_id%>
+						<% if gift.user == current_user %>
 						<td><%= gift.description %></td>
+						<td><%= image_tag gift.item_image.url(:medium) %></td>
 						<td><%= link_to 'Show', gift %></td>
-						<td><%= link_to 'Edit', edit_gift_path(gift) %></td>
-						<td><%= link_to 'Delete', gift, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-						
+							<td><%= link_to 'Edit', edit_gift_path(gift) %></td>
+							<td><%= link_to 'Delete', gift, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+						<% end %>					
 					</tr>
 				<% end %>
 			</tbody>

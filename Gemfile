@@ -41,8 +41,15 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin]
 # Custom bundles added by William
 	#bootstrap-sass
 	gem 'bootstrap-sass'
+	
 	# devise - user management
 	gem 'devise'
+	
+	#paperclip - image uploads
+	gem 'paperclip', github: 'thoughtbot/paperclip'
+	
+	# AWS for image storage
+	gem 'aws-sdk', '~> 1.20.0'
 	
 	#heroku
 	group :development, :test do 

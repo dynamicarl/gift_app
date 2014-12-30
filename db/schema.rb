@@ -11,13 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141229063036) do
+ActiveRecord::Schema.define(version: 20141230030439) do
 
   create_table "gifts", force: true do |t|
     t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.string   "item_image_file_name"
+    t.string   "item_image_content_type"
+    t.integer  "item_image_file_size"
+    t.datetime "item_image_updated_at"
+    t.string   "wrapped_image_file_name"
+    t.string   "wrapped_image_content_type"
+    t.integer  "wrapped_image_file_size"
+    t.datetime "wrapped_image_updated_at"
   end
 
   add_index "gifts", ["user_id"], name: "index_gifts_on_user_id"
