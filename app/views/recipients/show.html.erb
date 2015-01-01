@@ -4,6 +4,20 @@
 	<div class="panel-body">
 		<strong>Birthday:</strong>
 			<%= link_to @recipient.birthday, edit_recipient_path %>
+			<br />
+			<br />
+			
+			
+			<% @recipient.gifts.each do |gift| %>
+					<div class="box panel panel-default">
+						<div class="panel-heading"><strong>Pending Gifts</strong></div>
+						<div class="panel-body">
+							<% if gift.recipient_id == @recipient.id %>
+								<%= link_to gift.description, gift_path(gift.id) %>
+							<% end %>
+						</div>
+					</div>
+				<% end %>
 		</p>
 	</div>
 	<div class="panel-footer center">

@@ -7,6 +7,10 @@
 				<%= @gift.description %>
 			</div>
 			<div class="panel-body">
+				<strong>Intended Recipient: </strong>
+				<%= link_to @gift.recipient.name, recipient_path(@gift.recipient) %>
+				<br />
+				<br />
 				<strong>Item Image</strong><br />
 				<%= image_tag @gift.item_image.url(:thumb) %><br /><br />
 				<strong>Wrapped Image</strong><br />
