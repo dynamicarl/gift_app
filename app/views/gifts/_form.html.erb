@@ -20,6 +20,9 @@
 				<%= f.file_field :item_image, class: "form-control"%>
 				<%= f.label :wrapped_image %>
 				<%= f.file_field :wrapped_image, class: "form-control"%>
+
+				<%= f.label "Intended Recipient" %><br />
+				<%= f.collection_select(:recipient_id, Recipient.where("user_id = ?", current_user.id), :id, :name) %><br />
 			</div>
 			<div class="form-group">
 				<%= f.submit "Save Gift", class: "btn btn-primary" %>

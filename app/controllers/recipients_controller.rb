@@ -33,8 +33,11 @@ class RecipientsController < ApplicationController
   end
 
   def update
-    @recipient.update(recipient_params)
-    respond_with(@recipient)
+		if @recipient.update(recipient_params)
+			redirect_to @recipient, notice: 'Recipient successfully updated.'
+		else
+			render action: 'edit'
+    end
   end
 
   def destroy
