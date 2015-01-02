@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150101202437) do
+ActiveRecord::Schema.define(version: 20150102040102) do
 
   create_table "gifts", force: true do |t|
     t.string   "description"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20150101202437) do
     t.integer  "wrapped_image_file_size"
     t.datetime "wrapped_image_updated_at"
     t.integer  "recipient_id"
+    t.decimal  "value"
   end
 
   add_index "gifts", ["recipient_id"], name: "index_gifts_on_recipient_id"

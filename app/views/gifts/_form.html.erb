@@ -23,6 +23,8 @@
 
 				<%= f.label "Intended Recipient" %><br />
 				<%= f.collection_select(:recipient_id, Recipient.where("user_id = ?", current_user.id), :id, :name) %><br />
+				<%= f.label "Cost/Value of Item" %><br />
+				<%= f.text_field :value,  class: "form-control" %><br />
 			</div>
 			<div class="form-group">
 				<%= f.submit "Save Gift", class: "btn btn-primary" %>
